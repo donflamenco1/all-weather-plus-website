@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Weather Plus | Insulation & Weatherization Services</title>
+  <meta name="description" content="All Weather Plus, Inc. provides professional residential insulation and weatherization services across Northeast Ohio and Western Pennsylvania. Get a free estimate today.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue-900: #0c2340;
+      --blue-700: #1a3a5c;
+      --blue-600: #1e5288;
+      --blue-500: #2563eb;
+      --blue-100: #dbeafe;
+      --blue-50: #eff6ff;
+      --green-600: #16a34a;
+      --green-500: #22c55e;
+      --green-50: #f0fdf4;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-800);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: var(--shadow); }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-img {
+      height: 56px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-600);
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue-600); }
+
+    .nav-cta {
+      background: var(--blue-600);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--blue-900) !important;
+      transform: translateY(-1px);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gray-800);
+      margin: 6px 0;
+      transition: 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 140px 24px 100px;
+      background: linear-gradient(135deg, rgba(12,35,64,0.88) 0%, rgba(26,58,92,0.85) 50%, rgba(30,82,136,0.82) 100%),
+                  url('https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 14px;
+      color: var(--blue-100);
+      margin-bottom: 24px;
+    }
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green-500);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, #60a5fa, #93c5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 36px;
+      max-width: 500px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--blue-900);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .btn-green {
+      background: var(--green-600);
+      color: var(--white);
+    }
+    .btn-green:hover {
+      background: #15803d;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--blue-600);
+      border: 2px solid var(--blue-600);
+    }
+    .btn-outline:hover {
+      background: var(--blue-50);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+    }
+    .hero-card h3 {
+      color: var(--white);
+      font-size: 22px;
+      margin-bottom: 24px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+    }
+    .stat-number {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 6px;
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--gray-50);
+      padding: 24px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .trust-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--gray-600);
+      font-weight: 500;
+    }
+    .trust-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--blue-100);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 100px 24px; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--blue-600);
+      margin-bottom: 12px;
+    }
+    .section-header h2 {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-header p {
+      font-size: 18px;
+      color: var(--gray-600);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .service-card:hover {
+      border-color: var(--blue-500);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    .service-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .service-card-body {
+      padding: 28px;
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    .icon-blue { background: var(--blue-50); }
+    .icon-green { background: var(--green-50); }
+    .icon-amber { background: #fffbeb; }
+
+    /* ─── WHY US ─── */
+    #why-us { background: var(--gray-50); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .why-features {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .why-feature {
+      display: flex;
+      gap: 16px;
+    }
+    .why-feature-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: var(--blue-100);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .why-feature h4 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+    .why-feature p {
+      font-size: 15px;
+      color: var(--gray-600);
+    }
+
+    .why-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px;
+      box-shadow: var(--shadow-xl);
+    }
+    .why-card h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+    .why-card .tagline {
+      color: var(--blue-600);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .why-card p {
+      color: var(--gray-600);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--gray-700);
+    }
+    .check {
+      width: 22px;
+      height: 22px;
+      min-width: 22px;
+      background: var(--green-50);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green-600);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* ─── SERVICE AREAS ─── */
+    #areas { background: var(--white); }
+
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .area-card {
+      background: var(--blue-50);
+      border: 1px solid var(--blue-100);
+      border-radius: 10px;
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--blue-900);
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .area-card:hover {
+      background: var(--blue-600);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+    .areas-note {
+      text-align: center;
+      color: var(--gray-600);
+      font-size: 15px;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--gray-50); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+    .stars {
+      color: #f59e0b;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .testimonial-card blockquote {
+      font-size: 15px;
+      color: var(--gray-700);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-900);
+    }
+    .testimonial-location {
+      font-size: 13px;
+      color: var(--gray-400);
+    }
+
+    /* ─── CONTACT / LEAD FORM ─── */
+    #contact {
+      background: linear-gradient(135deg, var(--blue-900), var(--blue-700));
+      position: relative;
+    }
+    #contact .section-label { color: var(--blue-100); }
+    #contact .section-header h2 { color: var(--white); }
+    #contact .section-header p { color: rgba(255,255,255,0.7); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info {
+      color: var(--white);
+    }
+    .contact-info h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info > p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .contact-method-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .contact-method-text {
+      font-size: 15px;
+    }
+    .contact-method-text strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+    .contact-method-text span {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .form-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-xl);
+    }
+    .form-card h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 4px;
+    }
+    .form-card .form-sub {
+      color: var(--gray-600);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-700);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--blue-500);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 14px;
+      background: var(--blue-600);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover {
+      background: var(--blue-900);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+    .form-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-top: 12px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item:hover, .faq-item.open { border-color: var(--blue-500); }
+    .faq-question {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; background: none; border: none; cursor: pointer; text-align: left;
+    }
+    .faq-question h3 { font-size: 17px; font-weight: 600; color: var(--gray-800); }
+    .faq-toggle {
+      width: 32px; height: 32px; border-radius: 50%; background: var(--blue-600); color: white;
+      display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-toggle { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-answer { max-height: 500px; }
+    .faq-answer-inner { padding: 0 24px 20px; color: var(--gray-600); line-height: 1.7; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 24px 30px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .logo-text {
+      color: var(--white);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 968px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 38px; }
+      .hero-card { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      nav .nav-cta { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      .hero h1 { font-size: 32px; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
+      section { padding: 60px 24px; }
+      .section-header h2 { font-size: 28px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .trust-bar-inner { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <img src="logo.png" alt="All Weather Plus, Inc. — Residential Insulation &amp; Weatherization" class="logo-img">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact" class="nav-cta">Free Estimate</a></li>
+      </ul>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Now serving Northeast Ohio &amp; Western Pennsylvania
+        </div>
+        <h1>Keep Your Home <em>Comfortable</em> Year-Round</h1>
+        <p>Professional residential insulation and weatherization services that lower your energy bills, improve comfort, and protect your home in every season.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+          <a href="#services" class="btn btn-secondary">Our Services &darr;</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Trusted by Homeowners &amp; Agencies</h3>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Counties Served</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Licensed &amp; Insured</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">HWAP</div>
+            <div class="stat-label">Certified Contractor</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">A+</div>
+            <div class="stat-label">Customer Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST BAR ─── -->
+  <div class="trust-bar">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <div class="trust-icon">&#9989;</div>
+        Licensed &amp; Insured
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#127968;</div>
+        HWAP Certified
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#9733;</div>
+        5-Star Reviews
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#128176;</div>
+        Free Estimates
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">&#128205;</div>
+        Locally Owned
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What We Do</div>
+        <h2>Insulation &amp; Weatherization Services</h2>
+        <p>We keep Ohio homes energy-efficient and comfortable with proven insulation solutions and professional weatherization.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.pexels.com/photos/6474130/pexels-photo-6474130.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blown-in insulation being sprayed" loading="lazy">
+          <div class="service-card-body">
+          <h3>Blown-In Insulation</h3>
+          <p>Fiberglass and cellulose blown-in insulation for attics, walls, and crawl spaces. Reduce heat loss and lower energy costs with expert installation.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.pexels.com/photos/4482829/pexels-photo-4482829.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Window air sealing and weatherproofing" loading="lazy">
+          <div class="service-card-body">
+          <h3>Air Sealing</h3>
+          <p>Eliminate drafts and air leaks around windows, doors, electrical outlets, and ductwork. One of the most cost-effective ways to improve home comfort.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.pexels.com/photos/31602311/pexels-photo-31602311.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Residential home weatherization" loading="lazy">
+          <div class="service-card-body">
+          <h3>Weatherization Programs</h3>
+          <p>Certified HWAP (Home Weatherization Assistance Program) contractor. We help qualifying homeowners improve energy efficiency at no cost through state programs.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.pexels.com/photos/6124239/pexels-photo-6124239.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Worker installing attic insulation" loading="lazy">
+          <div class="service-card-body">
+          <h3>Attic Insulation</h3>
+          <p>Proper attic insulation is the single biggest upgrade for home energy savings. We assess, remove old insulation if needed, and install to current standards.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.pexels.com/photos/36532585/pexels-photo-36532585.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Wall insulation installation" loading="lazy">
+          <div class="service-card-body">
+          <h3>Wall Insulation</h3>
+          <p>Dense-pack wall insulation for older homes that were built without adequate insulation. Improves comfort and eliminates cold spots room by room.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img class="service-card-img" src="https://images.pexels.com/photos/209296/pexels-photo-209296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Home energy assessment" loading="lazy">
+          <div class="service-card-body">
+          <h3>Energy Assessments</h3>
+          <p>Comprehensive home energy assessments to identify where your home is losing energy. We provide actionable recommendations prioritized by impact and cost.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHY US ─── -->
+  <section id="why-us">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-features">
+          <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+            <div class="section-label">Why Choose Us</div>
+            <h2 style="font-size: 36px;">Ohio's Trusted Insulation Experts</h2>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#127919;</div>
+            <div>
+              <h4>Certified HWAP Contractor</h4>
+              <p>Approved by the State of Ohio for weatherization assistance programs, meeting the highest standards of quality and compliance.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#128170;</div>
+            <div>
+              <h4>Experienced &amp; Reliable</h4>
+              <p>Our crews are trained, background-checked, and dedicated to treating your home with the care it deserves.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#128200;</div>
+            <div>
+              <h4>Energy Savings That Pay Off</h4>
+              <p>Most customers see a noticeable drop in heating and cooling costs within the first season after insulation upgrades.</p>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">&#129309;</div>
+            <div>
+              <h4>Locally Owned &amp; Operated</h4>
+              <p>We live and work in the same communities we serve. Your satisfaction is our reputation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="why-card">
+          <img src="https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Comfortable, energy-efficient home interior" style="width:100%; height:200px; object-fit:cover; border-radius:12px; margin-bottom:24px;" loading="lazy">
+          <h3>All Weather Plus, Inc.</h3>
+          <div class="tagline">Comfort in Every Season</div>
+          <p>We specialize in making Northeast Ohio homes more comfortable and energy-efficient. Whether you're dealing with sky-high heating bills, drafty rooms, or looking to take advantage of weatherization assistance programs, we have the expertise to help.</p>
+          <ul class="checklist">
+            <li><span class="check">&#10003;</span> Free, no-obligation estimates</li>
+            <li><span class="check">&#10003;</span> Fully licensed &amp; insured</li>
+            <li><span class="check">&#10003;</span> Clean, professional installations</li>
+            <li><span class="check">&#10003;</span> HWAP program certified</li>
+            <li><span class="check">&#10003;</span> Serving 10+ counties in OH &amp; PA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICE AREAS ─── -->
+  <section id="areas">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Where We Work</div>
+        <h2>Serving Northeast Ohio &amp; Western PA</h2>
+        <p>We're proud to provide insulation and weatherization services across Ohio and into Western Pennsylvania.</p>
+      </div>
+      <h3 style="text-align:center; color: var(--gray-700); font-size: 16px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px;">Northeast Ohio</h3>
+      <div class="areas-grid">
+        <div class="area-card">Summit County</div>
+        <div class="area-card">Stark County</div>
+        <div class="area-card">Portage County</div>
+        <div class="area-card">Wayne County</div>
+        <div class="area-card">Medina County</div>
+        <div class="area-card">Mahoning County</div>
+        <div class="area-card">Trumbull County</div>
+        <div class="area-card">Columbiana County</div>
+      </div>
+      <h3 style="text-align:center; color: var(--gray-700); font-size: 16px; margin: 32px 0 16px; text-transform: uppercase; letter-spacing: 1px;">Western Pennsylvania</h3>
+      <div class="areas-grid">
+        <div class="area-card">Lawrence County</div>
+        <div class="area-card">Mercer County</div>
+        <div class="area-card">Beaver County</div>
+      </div>
+      <p class="areas-note" style="margin-top: 32px;">Don't see your area? <a href="#contact" style="color: var(--blue-600); font-weight: 600;">Contact us</a> &mdash; we may still be able to help.</p>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">What People Say</div>
+        <h2>Trusted by Homeowners</h2>
+        <p>See why families across Northeast Ohio rely on All Weather Plus for their insulation needs.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Our heating bill dropped significantly after All Weather Plus insulated our attic. The crew was professional and cleaned up everything when they were done."</blockquote>
+          <div class="testimonial-author">Satisfied Homeowner</div>
+          <div class="testimonial-location">Summit County, OH</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"They helped us through the weatherization program and made the whole process easy. Our house is so much more comfortable now, especially in winter."</blockquote>
+          <div class="testimonial-author">HWAP Program Participant</div>
+          <div class="testimonial-location">Stark County, OH</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote>"Fast, affordable, and high quality. They identified problem areas we didn't even know about and fixed everything in one visit. Highly recommend."</blockquote>
+          <div class="testimonial-author">Repeat Customer</div>
+          <div class="testimonial-location">Portage County, OH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT / LEAD FORM ─── -->
+  <!-- ─── FAQ ─── -->
+  <section id="faq" style="background: var(--gray-50);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Common Questions</span>
+        <h2>Insulation FAQ</h2>
+        <p>Answers to the questions homeowners ask us most about insulation, energy savings, and our services.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>How do I know if my home needs more insulation?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>There are several telltale signs: unusually high heating or cooling bills, rooms that feel drafty or have uneven temperatures, ice dams forming on your roof in winter, and your HVAC system running constantly without keeping up. If your home was built before the 1980s, there&rsquo;s a strong chance it&rsquo;s under-insulated by today&rsquo;s standards. A professional energy assessment &mdash; including blower door testing to measure your home&rsquo;s air leakage &mdash; can pinpoint exactly where your home is losing energy and what upgrades will have the biggest impact.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>What is R-value and why does it matter?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>R-value measures insulation&rsquo;s resistance to heat flow &mdash; the higher the number, the better it insulates. Different areas of your home require different R-values. For example, attics in Ohio typically need R-49 to R-60 for optimal efficiency. Walls usually need R-13 to R-21, and floors over unheated spaces need R-25 to R-30. We&rsquo;ll assess your current insulation levels and recommend the right R-value for each area of your home.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>How much can I save on energy bills with new insulation?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>According to the U.S. Department of Energy, adding insulation to attics, floors, and crawl spaces can reduce total energy costs by an average of 11%. Many homeowners in our area see even greater savings &mdash; especially in older homes that were originally built with little or no insulation. When combined with air sealing, the savings can be even more dramatic, often paying for the upgrade within a few years.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>What&rsquo;s the difference between blown-in and batt insulation?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Batt insulation comes in pre-cut rolls or sheets (the pink fiberglass you see at hardware stores) and works best in open, accessible spaces with standard stud spacing. Blown-in insulation &mdash; either fiberglass or cellulose &mdash; is installed using a machine that blows loose material into cavities, filling gaps and irregular spaces much more effectively. For most homes, blown-in provides better coverage, fewer air gaps, and easier installation, especially in attics and existing walls.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>Can insulation help reduce noise in my home?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Absolutely. Insulation materials like cellulose, fiberglass, and mineral wool absorb sound waves and reduce noise transfer between rooms and from outside. Dense-pack wall insulation is especially effective. If you&rsquo;re dealing with traffic noise, noisy neighbors, or sound traveling between floors, our sound insulation service can make a significant difference in your day-to-day comfort.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>Are there tax credits for insulation upgrades?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Yes. The federal Energy Efficient Home Improvement Credit (Section 25C) allows homeowners to claim up to 30% of the cost of qualifying insulation materials, up to $1,200 per year. This includes blown-in insulation, batts, and air sealing materials. Ohio and Pennsylvania may also offer additional state incentives and utility rebates. We can help you understand what credits may apply to your project.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>What is the HWAP weatherization program?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>HWAP (Home Weatherization Assistance Program) is a state-funded program that helps qualifying low-income homeowners improve their home&rsquo;s energy efficiency at no cost. As a certified HWAP contractor, All Weather Plus performs the insulation and air sealing work covered under the program. Eligibility is based on household income and other factors &mdash; contact your local community action agency or reach out to us, and we can help point you in the right direction.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <h3>How long does an insulation installation take?</h3>
+            <div class="faq-toggle">+</div>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Most residential insulation projects are completed in a single day. Attic insulation typically takes 3&ndash;6 hours depending on the size of the attic and whether old insulation needs to be removed first. Wall insulation and larger whole-home projects may take 1&ndash;2 days. We&rsquo;ll give you a clear timeline during your free estimate so you know exactly what to expect.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Get Started</div>
+        <h2>Request Your Free Estimate</h2>
+        <p>Fill out the form below and we'll get back to you within 24 hours to schedule your free, no-obligation assessment.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Let's Make Your Home More Comfortable</h3>
+          <p>Whether you're looking to lower energy bills, fix drafty rooms, or explore weatherization assistance options, we're here to help. Reach out today and take the first step toward a more energy-efficient home.</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-method-icon">&#128222;</div>
+              <div class="contact-method-text">
+                <strong>Call Us</strong>
+                <span>(330) 992-0102</span>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-method-icon">&#128231;</div>
+              <div class="contact-method-text">
+                <strong>Email</strong>
+                <span>msackela@allweatherplus.com</span>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-method-icon">&#128205;</div>
+              <div class="contact-method-text">
+                <strong>Address</strong>
+                <span>2419 S. Bailey Rd, North Jackson, Ohio 44451</span>
+              </div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-method-icon">&#128336;</div>
+              <div class="contact-method-text">
+                <strong>Business Hours</strong>
+                <span>Mon &ndash; Fri: 8:00 AM &ndash; 5:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3>Free Estimate Request</h3>
+          <p class="form-sub">We'll respond within 24 hours.</p>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" name="fname" required placeholder="John">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" name="lname" required placeholder="Smith">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="john@example.com">
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(330) 992-0102">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service" name="service">
+                <option value="">Select a service...</option>
+                <option>Blown-In Insulation</option>
+                <option>Air Sealing</option>
+                <option>Attic Insulation</option>
+                <option>Wall Insulation</option>
+                <option>Weatherization Program (HWAP)</option>
+                <option>Energy Assessment</option>
+                <option>Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Tell Us About Your Project</label>
+              <textarea id="message" name="message" placeholder="Describe your home's issues, what areas need attention, etc."></textarea>
+            </div>
+            <button type="submit" class="form-submit">Request Free Estimate &rarr;</button>
+            <p class="form-note">No spam. No obligation. Just honest advice.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="font-size: 22px; font-weight: 700; color: white; margin-bottom: 4px;">All Weather Plus, Inc.</div>
+          <p>Professional residential insulation and weatherization services for Northeast Ohio and Western Pennsylvania. Keeping homes comfortable and energy-efficient.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Blown-In Insulation</a></li>
+            <li><a href="#services">Air Sealing</a></li>
+            <li><a href="#services">Attic Insulation</a></li>
+            <li><a href="#services">Wall Insulation</a></li>
+            <li><a href="#services">Weatherization (HWAP)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Service Areas</h4>
+          <ul>
+            <li><a href="#areas">Summit County, OH</a></li>
+            <li><a href="#areas">Stark County, OH</a></li>
+            <li><a href="#areas">Mahoning County, OH</a></li>
+            <li><a href="#areas">Trumbull County, OH</a></li>
+            <li><a href="#areas">Lawrence County, PA</a></li>
+            <li><a href="#areas">+ 6 more counties</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#why-us">About Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#contact">Free Estimate</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 All Weather Plus. All rights reserved.</span>
+        <span>Photos by <a href="https://www.pexels.com" style="color:rgba(255,255,255,0.6);">Pexels</a> &middot; Serving NE Ohio &amp; Western PA with Pride</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // Simple form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = 'Request Sent!';
+      btn.style.background = '#16a34a';
+      setTimeout(() => {
+        btn.textContent = 'Request Free Estimate \u2192';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .testimonial-card, .why-feature, .area-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# Business documents (local only, not part of website)
+*.docx
+*.pdf
+*.png
+*.md
