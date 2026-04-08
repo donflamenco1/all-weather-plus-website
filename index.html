@@ -1466,8 +1466,11 @@
         <div class="form-card">
           <h3>Free Estimate Request</h3>
           <p class="form-sub">We'll respond within 24 hours.</p>
-          <form name="estimate" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
-            <input type="hidden" name="form-name" value="estimate">
+          <form action="https://formsubmit.co/msackela@allweatherplus.com" method="POST" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="_subject" value="New Estimate Request from allweatherplusinc.com">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none">
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name *</label>
@@ -1583,17 +1586,17 @@
       }
     }
 
-    // Form submission via Netlify Forms
+    // Form submission via Formsubmit.co
     function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('.form-submit');
       btn.textContent = 'Sending...';
       btn.disabled = true;
-      fetch('/', {
+      fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(form)).toString()
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
       })
       .then(r => {
         if (r.ok) {
