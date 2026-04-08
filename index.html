@@ -5,6 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Weather Plus | Insulation & Weatherization Services</title>
   <meta name="description" content="All Weather Plus, Inc. provides professional residential insulation and weatherization services across Northeast Ohio and Western Pennsylvania. Get a free estimate today.">
+  <link rel="canonical" href="https://allweatherplusinc.com/">
+  <meta property="og:title" content="All Weather Plus | Insulation & Weatherization Services">
+  <meta property="og:description" content="Professional residential insulation and weatherization services across Northeast Ohio and Western Pennsylvania. Free estimates.">
+  <meta property="og:image" content="https://allweatherplusinc.com/logo.png">
+  <meta property="og:url" content="https://allweatherplusinc.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="All Weather Plus">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "All Weather Plus, Inc.",
+    "description": "Professional residential insulation and weatherization services across Northeast Ohio and Western Pennsylvania.",
+    "url": "https://allweatherplusinc.com",
+    "telephone": "(330) 992-0102",
+    "email": "msackela@allweatherplus.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2419 S. Bailey Rd",
+      "addressLocality": "North Jackson",
+      "addressRegion": "OH",
+      "postalCode": "44451",
+      "addressCountry": "US"
+    },
+    "areaServed": ["Summit County OH", "Stark County OH", "Mahoning County OH", "Trumbull County OH", "Portage County OH", "Columbiana County OH", "Wayne County OH", "Medina County OH", "Lawrence County PA", "Mercer County PA", "Butler County PA"],
+    "serviceType": ["Blown-In Insulation", "Air Sealing", "Attic Insulation", "Wall Insulation", "Weatherization"],
+    "priceRange": "Free Estimates"
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -817,13 +847,17 @@
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
-      padding: 28px;
+      overflow: hidden;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .blog-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-lg);
     }
+    .blog-card img {
+      width: 100%; height: 180px; object-fit: cover;
+    }
+    .blog-card-body { padding: 24px; }
     .blog-card .blog-date {
       font-size: 13px;
       color: var(--gray-400);
@@ -1433,10 +1467,11 @@
         posts.slice(0, 3).forEach(p => {
           const card = document.createElement('div');
           card.className = 'blog-card';
-          card.innerHTML = `
+          if (p.image) card.innerHTML += `<img src="${p.image}" alt="${p.title}" loading="lazy">`;
+          card.innerHTML += `<div class="blog-card-body">
             <div class="blog-date">${new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
             <h3><a href="blog/${p.slug}.html">${p.title}</a></h3>
-            <p>${p.excerpt}</p>`;
+            <p>${p.excerpt}</p></div>`;
           grid.appendChild(card);
         });
       })

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://allweatherplusinc.com/sitemap.xml
