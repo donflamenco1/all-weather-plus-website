@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | All Weather Plus</title>
+  <meta name="description" content="Weatherization tips, energy efficiency advice, and home comfort insights from the team at All Weather Plus.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue-900: #0c2340; --blue-700: #1a3a5c; --blue-600: #1e5288;
+      --blue-500: #2563eb; --blue-100: #dbeafe; --blue-50: #eff6ff;
+      --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+      --gray-400: #9ca3af; --gray-600: #4b5563; --gray-800: #1f2937;
+      --gray-900: #111827; --white: #ffffff; --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: var(--gray-800); line-height: 1.6; background: var(--gray-50); }
+
+    nav { background: var(--blue-900); padding: 16px 0; }
+    nav .nav-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 500; font-size: 15px; }
+    nav a:hover { color: white; }
+    nav .logo { font-size: 18px; font-weight: 700; color: white; }
+
+    .blog-header { background: var(--blue-900); padding: 48px 24px 56px; text-align: center; }
+    .blog-header h1 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 8px; }
+    .blog-header p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto; }
+
+    .blog-list { max-width: 720px; margin: -20px auto 0; padding: 0 24px 80px; position: relative; z-index: 1; }
+    .blog-item {
+      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 16px; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .blog-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .blog-item .blog-date { font-size: 13px; color: var(--gray-400); margin-bottom: 6px; }
+    .blog-item h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .blog-item h2 a { color: var(--gray-900); text-decoration: none; }
+    .blog-item h2 a:hover { color: var(--blue-600); }
+    .blog-item p { font-size: 15px; color: var(--gray-600); line-height: 1.6; }
+
+    .blog-empty { text-align: center; padding: 60px 24px; color: var(--gray-400); font-size: 16px; }
+
+    footer { background: var(--blue-900); color: rgba(255,255,255,0.6); padding: 32px 24px; text-align: center; font-size: 14px; }
+    footer a { color: rgba(255,255,255,0.6); }
+
+    @media (max-width: 640px) {
+      .blog-header h1 { font-size: 28px; }
+      .blog-header { padding: 36px 20px 44px; }
+      .blog-item { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="../" class="logo">All Weather Plus</a>
+      <div>
+        <a href="../" style="margin-right: 20px;">Home</a>
+        <a href="../#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="blog-header">
+    <h1>Weatherization Tips & Insights</h1>
+    <p>Practical advice to keep your home comfortable and energy-efficient year-round.</p>
+  </div>
+
+  <div class="blog-list" id="blog-list">
+    <!-- Populated by JavaScript from posts.json -->
+  </div>
+
+  <footer>
+    <p>&copy; 2026 All Weather Plus, Inc. &middot; <a href="../">Home</a> &middot; <a href="../#contact">Contact</a></p>
+  </footer>
+
+  <script>
+    fetch('posts.json')
+      .then(r => r.json())
+      .then(posts => {
+        const list = document.getElementById('blog-list');
+        if (!posts.length) {
+          list.innerHTML = '<div class="blog-empty">No posts yet. Check back soon!</div>';
+          return;
+        }
+        posts.forEach(p => {
+          const item = document.createElement('div');
+          item.className = 'blog-item';
+          item.innerHTML = `
+            <div class="blog-date">${new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+            <h2><a href="${p.slug}.html">${p.title}</a></h2>
+            <p>${p.excerpt}</p>`;
+          list.appendChild(item);
+        });
+      })
+      .catch(() => {
+        document.getElementById('blog-list').innerHTML = '<div class="blog-empty">No posts yet. Check back soon!</div>';
+      });
+  </script>
+</body>
+</html>
