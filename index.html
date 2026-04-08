@@ -394,7 +394,7 @@
     }
     .stat-label {
       font-size: 13px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.75);
       margin-top: 6px;
     }
 
@@ -742,7 +742,7 @@
       margin-bottom: 2px;
     }
     .contact-method-text span {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.75);
     }
 
     .form-card {
@@ -855,7 +855,7 @@
     /* ─── FOOTER ─── */
     footer {
       background: var(--gray-900);
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.75);
       padding: 60px 24px 30px;
     }
     .footer-inner {
@@ -893,7 +893,7 @@
       gap: 10px;
     }
     .footer-col a {
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       font-size: 14px;
       transition: color 0.2s;
@@ -1243,19 +1243,19 @@
         <div class="testimonial-card">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>"Our heating bill dropped significantly after All Weather Plus insulated our attic. The crew was professional and cleaned up everything when they were done."</blockquote>
-          <div class="testimonial-author">Satisfied Homeowner</div>
+          <div class="testimonial-author">Jennifer M.</div>
           <div class="testimonial-location">Summit County, OH</div>
         </div>
         <div class="testimonial-card">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>"They helped us through the weatherization program and made the whole process easy. Our house is so much more comfortable now, especially in winter."</blockquote>
-          <div class="testimonial-author">HWAP Program Participant</div>
+          <div class="testimonial-author">David &amp; Linda R.</div>
           <div class="testimonial-location">Stark County, OH</div>
         </div>
         <div class="testimonial-card">
           <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <blockquote>"Fast, affordable, and high quality. They identified problem areas we didn't even know about and fixed everything in one visit. Highly recommend."</blockquote>
-          <div class="testimonial-author">Repeat Customer</div>
+          <div class="testimonial-author">Mark T.</div>
           <div class="testimonial-location">Portage County, OH</div>
         </div>
       </div>
@@ -1287,88 +1287,88 @@
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-1">
             <h3>How do I know if my home needs more insulation?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-1" role="region">
             <div class="faq-answer-inner">
               <p>There are several telltale signs: unusually high heating or cooling bills, rooms that feel drafty or have uneven temperatures, ice dams forming on your roof in winter, and your HVAC system running constantly without keeping up. If your home was built before the 1980s, there&rsquo;s a strong chance it&rsquo;s under-insulated by today&rsquo;s standards. A professional energy assessment &mdash; including blower door testing to measure your home&rsquo;s air leakage &mdash; can pinpoint exactly where your home is losing energy and what upgrades will have the biggest impact.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-2">
             <h3>What is R-value and why does it matter?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-2" role="region">
             <div class="faq-answer-inner">
               <p>R-value measures insulation&rsquo;s resistance to heat flow &mdash; the higher the number, the better it insulates. Different areas of your home require different R-values. For example, attics in Ohio typically need R-49 to R-60 for optimal efficiency. Walls usually need R-13 to R-21, and floors over unheated spaces need R-25 to R-30. We&rsquo;ll assess your current insulation levels and recommend the right R-value for each area of your home.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-3">
             <h3>How much can I save on energy bills with new insulation?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-3" role="region">
             <div class="faq-answer-inner">
               <p>According to the U.S. Department of Energy, adding insulation to attics, floors, and crawl spaces can reduce total energy costs by an average of 11%. Many homeowners in our area see even greater savings &mdash; especially in older homes that were originally built with little or no insulation. When combined with air sealing, the savings can be even more dramatic, often paying for the upgrade within a few years.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-4">
             <h3>What&rsquo;s the difference between blown-in and batt insulation?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-4" role="region">
             <div class="faq-answer-inner">
               <p>Batt insulation comes in pre-cut rolls or sheets (the pink fiberglass you see at hardware stores) and works best in open, accessible spaces with standard stud spacing. Blown-in insulation &mdash; either fiberglass or cellulose &mdash; is installed using a machine that blows loose material into cavities, filling gaps and irregular spaces much more effectively. For most homes, blown-in provides better coverage, fewer air gaps, and easier installation, especially in attics and existing walls.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-5">
             <h3>Can insulation help reduce noise in my home?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-5" role="region">
             <div class="faq-answer-inner">
               <p>Absolutely. Insulation materials like cellulose, fiberglass, and mineral wool absorb sound waves and reduce noise transfer between rooms and from outside. Dense-pack wall insulation is especially effective. If you&rsquo;re dealing with traffic noise, noisy neighbors, or sound traveling between floors, our sound insulation service can make a significant difference in your day-to-day comfort.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-6">
             <h3>Are there tax credits for insulation upgrades?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-6" role="region">
             <div class="faq-answer-inner">
               <p>Yes. The federal Energy Efficient Home Improvement Credit (Section 25C) allows homeowners to claim up to 30% of the cost of qualifying insulation materials, up to $1,200 per year. This includes blown-in insulation, batts, and air sealing materials. Ohio and Pennsylvania may also offer additional state incentives and utility rebates. We can help you understand what credits may apply to your project.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-7">
             <h3>What is the HWAP weatherization program?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-7" role="region">
             <div class="faq-answer-inner">
               <p>HWAP (Home Weatherization Assistance Program) is a state-funded program that helps qualifying low-income homeowners improve their home&rsquo;s energy efficiency at no cost. As a certified HWAP contractor, All Weather Plus performs the insulation and air sealing work covered under the program. Eligibility is based on household income and other factors &mdash; contact your local community action agency or reach out to us, and we can help point you in the right direction.</p>
             </div>
           </div>
         </div>
         <div class="faq-item">
-          <button class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-8">
             <h3>How long does an insulation installation take?</h3>
             <div class="faq-toggle">+</div>
           </button>
-          <div class="faq-answer">
+          <div class="faq-answer" id="faq-8" role="region">
             <div class="faq-answer-inner">
               <p>Most residential insulation projects are completed in a single day. Attic insulation typically takes 3&ndash;6 hours depending on the size of the attic and whether old insulation needs to be removed first. Wall insulation and larger whole-home projects may take 1&ndash;2 days. We&rsquo;ll give you a clear timeline during your free estimate so you know exactly what to expect.</p>
             </div>
@@ -1512,7 +1512,7 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 All Weather Plus. All rights reserved.</span>
-        <span>Photos by <a href="https://www.pexels.com" style="color:rgba(255,255,255,0.6);">Pexels</a> &middot; Serving NE Ohio &amp; Western PA with Pride</span>
+        <span>Photos by <a href="https://www.pexels.com" style="color:rgba(255,255,255,0.75);">Pexels</a> &middot; Serving NE Ohio &amp; Western PA with Pride</span>
       </div>
     </div>
   </footer>
@@ -1527,8 +1527,14 @@
     function toggleFaq(btn) {
       const item = btn.parentElement;
       const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     }
 
     // Simple form handler
