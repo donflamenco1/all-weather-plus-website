@@ -1437,14 +1437,14 @@
               <div class="contact-method-icon">&#128222;</div>
               <div class="contact-method-text">
                 <strong>Call Us</strong>
-                <span>(330) 992-0102</span>
+                <span><a href="tel:3309920102" style="color: inherit; text-decoration: none;">(330) 992-0102</a></span>
               </div>
             </div>
             <div class="contact-method">
               <div class="contact-method-icon">&#128231;</div>
               <div class="contact-method-text">
                 <strong>Email</strong>
-                <span>msackela@allweatherplus.com</span>
+                <span><a href="mailto:msackela@allweatherplus.com" style="color: inherit; text-decoration: none;">msackela@allweatherplus.com</a></span>
               </div>
             </div>
             <div class="contact-method">
@@ -1466,7 +1466,8 @@
         <div class="form-card">
           <h3>Free Estimate Request</h3>
           <p class="form-sub">We'll respond within 24 hours.</p>
-          <form onsubmit="handleSubmit(event)">
+          <form name="estimate" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="form-name" value="estimate">
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name *</label>
@@ -1582,17 +1583,31 @@
       }
     }
 
-    // Simple form handler
+    // Form submission via Netlify Forms
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = 'Request Sent!';
-      btn.style.background = '#16a34a';
-      setTimeout(() => {
-        btn.textContent = 'Get My Free Estimate \u2192';
-        btn.style.background = '';
-        e.target.reset();
-      }, 3000);
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(r => {
+        if (r.ok) {
+          btn.textContent = 'Request Sent!';
+          btn.style.background = '#16a34a';
+          setTimeout(() => { btn.textContent = 'Get My Free Estimate \u2192'; btn.style.background = ''; btn.disabled = false; form.reset(); }, 4000);
+        } else { throw new Error('Form submission failed'); }
+      })
+      .catch(() => {
+        btn.textContent = 'Error \u2014 Please call (330) 992-0102';
+        btn.style.background = '#ef4444';
+        btn.disabled = false;
+        setTimeout(() => { btn.textContent = 'Get My Free Estimate \u2192'; btn.style.background = ''; }, 5000);
+      });
     }
 
     // Load blog preview from posts.json
