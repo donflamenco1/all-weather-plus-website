@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Savings Calculator | All Weather Plus</title>
+  <meta name="description" content="Find out how much you could save on energy bills with better insulation. Enter your home details and get an instant savings estimate for Northeast Ohio homes.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://allweatherplusinc.com/calculator.html">
+  <meta property="og:title" content="Energy Savings Calculator | All Weather Plus">
+  <meta property="og:description" content="Find out how much you could save with better insulation. Free instant estimate for NE Ohio homeowners.">
+  <meta property="og:image" content="https://allweatherplusinc.com/logo.png">
+  <meta property="og:url" content="https://allweatherplusinc.com/calculator.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="All Weather Plus">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --blue-900: #0c2340; --blue-700: #1a3a5c; --blue-600: #1e5288;
+      --blue-500: #2563eb; --blue-100: #dbeafe; --blue-50: #eff6ff;
+      --green-600: #16a34a; --green-500: #22c55e; --green-50: #f0fdf4;
+      --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+      --gray-400: #9ca3af; --gray-600: #4b5563; --gray-700: #374151;
+      --gray-800: #1f2937; --gray-900: #111827; --white: #ffffff;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: var(--gray-800); line-height: 1.6; background: var(--gray-50); }
+
+    nav { background: var(--blue-900); padding: 16px 0; }
+    nav .nav-inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+    nav a { color: rgba(255,255,255,0.85); text-decoration: none; font-weight: 500; font-size: 15px; }
+    nav a:hover { color: white; }
+    nav .logo { font-size: 18px; font-weight: 700; color: white; }
+    nav .nav-links { display: flex; gap: 20px; }
+
+    .hero-banner { background: var(--blue-900); padding: 48px 24px 56px; text-align: center; }
+    .hero-banner h1 { font-size: 36px; font-weight: 800; color: white; margin-bottom: 8px; }
+    .hero-banner p { font-size: 17px; color: rgba(255,255,255,0.75); max-width: 600px; margin: 0 auto; }
+
+    .page { max-width: 1000px; margin: -20px auto 0; padding: 0 24px 60px; position: relative; z-index: 1; }
+
+    /* Calculator Card */
+    .calc-card {
+      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+      padding: 36px; box-shadow: var(--shadow-lg); margin-bottom: 32px;
+    }
+    .calc-card h2 { font-size: 22px; font-weight: 700; color: var(--gray-900); margin-bottom: 20px; }
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .calc-group { display: flex; flex-direction: column; }
+    .calc-group label { font-size: 14px; font-weight: 600; color: var(--gray-700); margin-bottom: 6px; }
+    .calc-group select, .calc-group input {
+      padding: 12px 14px; border: 1px solid var(--gray-200); border-radius: 8px;
+      font-size: 16px; font-family: inherit; color: var(--gray-800);
+      transition: border-color 0.2s;
+    }
+    .calc-group select:focus, .calc-group input:focus { outline: none; border-color: var(--blue-500); }
+    .calc-group .hint { font-size: 12px; color: var(--gray-400); margin-top: 4px; }
+
+    .calc-btn {
+      display: block; width: 100%; padding: 16px; margin-top: 24px;
+      background: var(--blue-600); color: white; border: none; border-radius: 8px;
+      font-size: 18px; font-weight: 700; font-family: inherit; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--blue-700); }
+
+    /* Results */
+    .results { display: none; margin-top: 32px; }
+    .results.show { display: block; }
+
+    .results-header {
+      text-align: center; padding: 28px; background: var(--green-50); border: 1px solid #bbf7d0;
+      border-radius: var(--radius); margin-bottom: 24px;
+    }
+    .results-header .big-number { font-size: 48px; font-weight: 800; color: var(--green-600); }
+    .results-header .big-label { font-size: 16px; color: var(--gray-600); margin-top: 4px; }
+
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .result-card {
+      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+      padding: 24px; text-align: center;
+    }
+    .result-card .number { font-size: 28px; font-weight: 800; color: var(--blue-600); }
+    .result-card .label { font-size: 13px; color: var(--gray-600); margin-top: 4px; }
+
+    /* Bar Chart */
+    .chart-section { margin: 28px 0; }
+    .chart-section h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; color: var(--gray-900); }
+    .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .bar-label { width: 80px; font-size: 13px; font-weight: 600; color: var(--gray-600); text-align: right; flex-shrink: 0; }
+    .bar-track { flex: 1; background: var(--gray-100); border-radius: 6px; height: 36px; position: relative; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 12px;
+      font-size: 14px; font-weight: 700; color: white; transition: width 1s ease; }
+    .bar-before { background: #ef4444; }
+    .bar-after { background: var(--green-500); }
+
+    /* 5-Year Projection */
+    .projection-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    .projection-table th { text-align: left; font-size: 13px; font-weight: 600; color: var(--gray-600); padding: 8px 12px; border-bottom: 2px solid var(--gray-200); }
+    .projection-table td { padding: 10px 12px; font-size: 15px; border-bottom: 1px solid var(--gray-100); }
+    .projection-table .savings { color: var(--green-600); font-weight: 700; }
+
+    /* CTA */
+    .cta-box {
+      background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: var(--radius);
+      padding: 32px; text-align: center; margin-top: 28px;
+    }
+    .cta-box p { font-size: 18px; font-weight: 600; color: var(--gray-900); margin-bottom: 16px; }
+    .cta-box .sub { font-size: 14px; color: var(--gray-600); margin-bottom: 16px; font-weight: 400; }
+    .cta-box a {
+      display: inline-block; background: var(--blue-600); color: white; padding: 14px 32px;
+      border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;
+    }
+    .cta-box a:hover { background: var(--blue-700); }
+
+    /* Context Section */
+    .context { max-width: 720px; margin: 40px auto 0; }
+    .context h2 { font-size: 24px; font-weight: 800; color: var(--gray-900); margin-bottom: 16px; }
+    .context h3 { font-size: 18px; font-weight: 700; color: var(--gray-900); margin-top: 28px; margin-bottom: 8px; }
+    .context p { font-size: 16px; color: var(--gray-700); margin-bottom: 14px; line-height: 1.7; }
+    .context .source { font-size: 12px; color: var(--gray-400); font-style: italic; }
+
+    .disclaimer {
+      font-size: 12px; color: var(--gray-400); text-align: center; margin-top: 32px; padding-top: 16px;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    footer { background: var(--blue-900); color: rgba(255,255,255,0.75); padding: 32px 24px; text-align: center; font-size: 14px; }
+    footer a { color: rgba(255,255,255,0.75); }
+
+    @media (max-width: 640px) {
+      .hero-banner h1 { font-size: 28px; }
+      .calc-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .results-header .big-number { font-size: 36px; }
+      .bar-label { width: 60px; font-size: 12px; }
+      nav .nav-links { gap: 12px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="./" class="logo">All Weather Plus</a>
+      <div class="nav-links">
+        <a href="./">Home</a>
+        <a href="./#services">Services</a>
+        <a href="blog/">Blog</a>
+        <a href="./#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-banner">
+    <h1>How Much Will You Save?</h1>
+    <p>Enter your home details below for a free, instant estimate of your potential energy savings with better insulation.</p>
+  </div>
+
+  <main>
+  <div class="page">
+    <div class="calc-card">
+      <h2>Your Home Details</h2>
+      <div class="calc-grid">
+        <div class="calc-group">
+          <label for="sqft">Home Size (sq ft)</label>
+          <input type="number" id="sqft" value="1600" min="500" max="10000" step="100">
+          <span class="hint">NE Ohio average: ~1,620 sq ft</span>
+        </div>
+        <div class="calc-group">
+          <label for="bill">Monthly Energy Bill ($)</label>
+          <input type="number" id="bill" value="220" min="50" max="1000" step="10">
+          <span class="hint">Include gas + electric combined</span>
+        </div>
+        <div class="calc-group">
+          <label for="age">Home Age</label>
+          <select id="age">
+            <option value="pre1960">Built before 1960</option>
+            <option value="1960s" selected>Built 1960&ndash;1979</option>
+            <option value="1980s">Built 1980&ndash;1999</option>
+            <option value="2000s">Built 2000 or later</option>
+          </select>
+          <span class="hint">Older homes have the most savings potential</span>
+        </div>
+        <div class="calc-group">
+          <label for="fuel">Primary Heating Fuel</label>
+          <select id="fuel">
+            <option value="gas" selected>Natural Gas</option>
+            <option value="electric">Electric</option>
+            <option value="propane">Propane</option>
+          </select>
+          <span class="hint">64% of Ohio homes use natural gas</span>
+        </div>
+        <div class="calc-group">
+          <label for="insulation">Current Insulation Condition</label>
+          <select id="insulation">
+            <option value="none">Little to none</option>
+            <option value="poor" selected>Below average / old</option>
+            <option value="average">Average / decent</option>
+            <option value="good">Already well-insulated</option>
+          </select>
+        </div>
+        <div class="calc-group">
+          <label for="scope">Upgrade Scope</label>
+          <select id="scope">
+            <option value="attic">Attic insulation only</option>
+            <option value="full" selected>Full insulation + air sealing</option>
+            <option value="comprehensive">Comprehensive weatherization</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculate()">Calculate My Savings</button>
+    </div>
+
+    <div class="results" id="results">
+      <div class="results-header">
+        <div class="big-number" id="r-annual">$0</div>
+        <div class="big-label">Estimated Annual Savings</div>
+      </div>
+
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="number" id="r-monthly">$0</div>
+          <div class="label">Monthly Savings</div>
+        </div>
+        <div class="result-card">
+          <div class="number" id="r-fiveyear">$0</div>
+          <div class="label">5-Year Savings</div>
+        </div>
+        <div class="result-card">
+          <div class="number" id="r-payback">0 yrs</div>
+          <div class="label">Est. Payback Period</div>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <h3>Your Monthly Energy Bill: Before vs. After</h3>
+        <div class="bar-row">
+          <div class="bar-label">Before</div>
+          <div class="bar-track"><div class="bar-fill bar-before" id="bar-before"></div></div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">After</div>
+          <div class="bar-track"><div class="bar-fill bar-after" id="bar-after"></div></div>
+        </div>
+      </div>
+
+      <div class="chart-section">
+        <h3>5-Year Savings Projection</h3>
+        <p style="font-size:14px; color:var(--gray-600); margin-bottom:8px;">Energy prices are projected to rise ~4% per year (EIA). Your savings grow as prices increase.</p>
+        <table class="projection-table">
+          <thead><tr><th>Year</th><th>Without Upgrade</th><th>With Upgrade</th><th>Cumulative Savings</th></tr></thead>
+          <tbody id="projection-body"></tbody>
+        </table>
+      </div>
+
+      <div class="cta-box">
+        <p>Ready to Start Saving?</p>
+        <p class="sub">These estimates are based on DOE and EIA data for Northeast Ohio. A free in-home assessment will give you exact numbers for your home.</p>
+        <a href="./#contact">Get Your Free Estimate Today</a>
+      </div>
+
+      <p class="disclaimer">Estimates based on U.S. DOE Weatherization Assistance Program data, EIA energy price statistics, and ENERGY STAR methodology. Actual savings vary based on home condition, insulation type, installation quality, and weather patterns. This calculator provides general estimates and is not a guarantee of savings.</p>
+    </div>
+
+    <div class="context">
+      <h2>Why Northeast Ohio Energy Bills Keep Rising</h2>
+      <p>If your energy bills feel higher than ever, you're not imagining it. Ohio residential electricity rates hit 17.59 cents per kWh in January 2026 — up from 15.62 cents just a year earlier. Natural gas prices have risen 84% since 2020, from $14.22/MCF to $26.21/MCF delivered to homes.</p>
+      <p class="source">Source: U.S. Energy Information Administration (EIA), Ohio Natural Gas Prices, Electric Power Monthly</p>
+
+      <h3>What's Driving the Increases?</h3>
+      <p>Data center demand is creating the strongest four-year growth in U.S. electricity demand since 2000. An 833% increase in PJM capacity costs (the grid operator covering Ohio) has directly impacted customer bills, with 10-15% increases in the 2025-2026 period. The EIA projects residential electricity prices will continue rising approximately 4% annually through 2027.</p>
+      <p class="source">Source: EIA Short-Term Energy Outlook (STEO), March 2026</p>
+
+      <h3>How Insulation Fights Rising Costs</h3>
+      <p>According to the U.S. Department of Energy, weatherization reduces energy consumption by up to 35%. The EPA estimates homeowners save an average of 15% on heating and cooling costs by air sealing and adding insulation. In Ohio specifically, the state's Weatherization Assistance Program documents average household savings of $540-$620 per year — one of the highest-performing programs in the country.</p>
+      <p class="source">Source: U.S. DOE Weatherization Assistance Program, ORNL Retrospective Evaluation, ENERGY STAR Methodology</p>
+
+      <h3>The NE Ohio Housing Problem</h3>
+      <p>Nearly 50% of Cleveland-area homes were built before 1939. The median home sold in the region was built around 1959. These homes were constructed with little to no wall insulation and attic insulation far below modern R-49 to R-60 standards. With 64% of Ohio homes heated by natural gas — and gas prices nearly doubling since 2020 — the gap between what these homes cost to heat and what they should cost is widening every year.</p>
+      <p class="source">Source: Axios Cleveland, EIA RECS 2020, Energy Smart Ohio</p>
+    </div>
+  </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 All Weather Plus, Inc. &middot; <a href="./">Home</a> &middot; <a href="blog/">Blog</a> &middot; <a href="./#contact">Contact</a> &middot; <a href="privacy.html">Privacy</a></p>
+  </footer>
+
+  <script>
+    function calculate() {
+      const sqft = parseInt(document.getElementById('sqft').value) || 1600;
+      const bill = parseInt(document.getElementById('bill').value) || 220;
+      const age = document.getElementById('age').value;
+      const fuel = document.getElementById('fuel').value;
+      const insulation = document.getElementById('insulation').value;
+      const scope = document.getElementById('scope').value;
+
+      // Savings percentage based on inputs
+      // Base savings by scope (from DOE/ENERGY STAR data)
+      let baseSavings = { attic: 0.10, full: 0.18, comprehensive: 0.28 }[scope];
+
+      // Age multiplier (older homes save more)
+      const ageMult = { pre1960: 1.3, '1960s': 1.15, '1980s': 1.0, '2000s': 0.7 }[age];
+
+      // Insulation condition multiplier
+      const insMult = { none: 1.4, poor: 1.15, average: 0.85, good: 0.5 }[insulation];
+
+      // Fuel adjustment (electric heat saves more from insulation)
+      const fuelMult = { gas: 1.0, electric: 1.15, propane: 1.1 }[fuel];
+
+      // Calculate effective savings percentage (capped at 40%)
+      let savingsPct = Math.min(baseSavings * ageMult * insMult * fuelMult, 0.40);
+
+      // Annual calculations
+      const annualBill = bill * 12;
+      const annualSavings = Math.round(annualBill * savingsPct);
+      const monthlySavings = Math.round(annualSavings / 12);
+      const afterBill = bill - monthlySavings;
+
+      // Investment cost estimate by scope and home size
+      const costPerSqft = { attic: 1.5, full: 3.0, comprehensive: 4.5 }[scope];
+      const investmentCost = Math.round(sqft * costPerSqft / 100) * 100; // round to nearest $100
+      const paybackYears = Math.round(investmentCost / annualSavings * 10) / 10;
+
+      // 5-year projection with 4% annual energy price increase
+      const priceGrowth = 0.04;
+      let cumSavings = 0;
+      const projRows = [];
+      for (let y = 1; y <= 5; y++) {
+        const factor = Math.pow(1 + priceGrowth, y);
+        const withoutUpgrade = Math.round(annualBill * factor);
+        const withUpgrade = Math.round((annualBill - annualSavings) * factor);
+        cumSavings += (withoutUpgrade - withUpgrade);
+        projRows.push({ year: 2026 + y, without: withoutUpgrade, with: withUpgrade, cum: cumSavings });
+      }
+
+      // Update display
+      document.getElementById('r-annual').textContent = '$' + annualSavings.toLocaleString();
+      document.getElementById('r-monthly').textContent = '$' + monthlySavings;
+      document.getElementById('r-fiveyear').textContent = '$' + projRows[4].cum.toLocaleString();
+      document.getElementById('r-payback').textContent = paybackYears <= 15 ? paybackYears + ' yrs' : '15+ yrs';
+
+      // Bars
+      const maxBill = bill;
+      document.getElementById('bar-before').style.width = '100%';
+      document.getElementById('bar-before').textContent = '$' + bill + '/mo';
+      const afterPct = Math.round((afterBill / maxBill) * 100);
+      document.getElementById('bar-after').style.width = afterPct + '%';
+      document.getElementById('bar-after').textContent = '$' + afterBill + '/mo';
+
+      // Projection table
+      const tbody = document.getElementById('projection-body');
+      tbody.innerHTML = '';
+      projRows.forEach(r => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${r.year}</td><td>$${r.without.toLocaleString()}</td><td>$${r.with.toLocaleString()}</td><td class="savings">$${r.cum.toLocaleString()}</td>`;
+        tbody.appendChild(tr);
+      });
+
+      // Show results with smooth scroll
+      const results = document.getElementById('results');
+      results.classList.add('show');
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
