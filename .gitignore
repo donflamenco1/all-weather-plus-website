@@ -3,3 +3,6 @@
 *.pdf
 *.png
 *.md
+
+# Allow website assets
+!logo.png
