@@ -1032,7 +1032,6 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .trust-bar-inner { gap: 24px; }
-      .floating-phone { display: flex; }
     }
 
     /* ─── FLOATING PHONE BUTTON (mobile only) ─── */
@@ -1066,6 +1065,9 @@
       0%, 100% { box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45); }
       50% { box-shadow: 0 4px 24px rgba(22, 163, 74, 0.7); }
     }
+    @media (max-width: 640px) {
+      .floating-phone { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -1074,7 +1076,7 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="logo">
-        <img src="logo-white.png" alt="All Weather Plus, Inc. — Residential Insulation &amp; Weatherization" class="logo-img">
+        <img src="logo.png" alt="All Weather Plus, Inc. — Residential Insulation &amp; Weatherization" class="logo-img">
       </a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
