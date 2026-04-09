@@ -1032,6 +1032,39 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .trust-bar-inner { gap: 24px; }
+      .floating-phone { display: flex; }
+    }
+
+    /* ─── FLOATING PHONE BUTTON (mobile only) ─── */
+    .floating-phone {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      background: var(--green-600);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: phone-pulse 2s ease-in-out infinite;
+    }
+    .floating-phone:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(22, 163, 74, 0.55);
+    }
+    .floating-phone svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+    @keyframes phone-pulse {
+      0%, 100% { box-shadow: 0 4px 14px rgba(22, 163, 74, 0.45); }
+      50% { box-shadow: 0 4px 24px rgba(22, 163, 74, 0.7); }
     }
   </style>
 </head>
@@ -1646,5 +1679,10 @@
       observer.observe(el);
     });
   </script>
+
+  <!-- Floating phone button (mobile only) -->
+  <a href="tel:+13309920102" class="floating-phone" aria-label="Call All Weather Plus">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1.003 1.003 0 0 1 1.11-.27c1.12.45 2.33.69 3.48.69.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.24 2.45.69 3.48.14.34.08.74-.27 1.11l-2.2 2.2z"/></svg>
+  </a>
 </body>
 </html>
