@@ -1467,12 +1467,8 @@
         <div class="form-card">
           <h3>Free Estimate Request</h3>
           <p class="form-sub">We'll respond within 24 hours.</p>
-          <form action="https://formsubmit.co/msackela@allweatherplusinc.com" method="POST" onsubmit="handleSubmit(event)">
+          <form action="https://formspree.io/f/mvzvndow" method="POST" onsubmit="handleSubmit(event)">
             <input type="hidden" name="_subject" value="New Estimate Request from allweatherplusinc.com">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://allweatherplusinc.com/#contact">
-            <input type="text" name="_honey" style="display:none">
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name *</label>
@@ -1588,7 +1584,7 @@
       }
     }
 
-    // Form submission via Formsubmit.co
+    // Form submission via Formspree
     function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -1597,6 +1593,7 @@
       btn.disabled = true;
       fetch(form.action, {
         method: 'POST',
+        headers: { 'Accept': 'application/json' },
         body: new FormData(form)
       })
       .then(r => {
